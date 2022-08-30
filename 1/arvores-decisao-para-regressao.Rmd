@@ -1,0 +1,28 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(rpart)
+library(forecast)
+```
+
+
+```{r}
+iris
+```
+
+
+ - Prevendo ao Tamanho da Sepala
+```{r}
+
+model = rpart(Sepal.Length ~ Sepal.Width + Petal.Width + Species, data=iris)
+summary(model)
+model
+```
+```{r}
+plot(model)
+text(model)
+```
+
