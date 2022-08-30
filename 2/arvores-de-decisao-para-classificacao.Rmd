@@ -4,11 +4,56 @@ output: html_notebook
 ---
 
 
-
-
 ```{r}
-plot(cars)
+library(rpart)
+library(rpart.plot)
 ```
 
 
+```{r}
+credit = read.csv("Credit.csv")
+
+head(credit, 5)
+
+# 70% treino e 30% teste
+
+amostra = sample(2,1000, replace = T, prob = c(0.7,0.3))
+creditreino = credit[amostra==1,]
+crediteste = credit[amostra==2,]
+```
+
+# criando modelo para classificar
+
+```{r}
+tree = rpart(class~., data = creditreino, method = "class")
+print(tree)
+
+```
+
+```{r}
+rpart.plot(tree, type = 3)
+```
+
+```{r}
+
+test = predict(tree,newdata = creditest)
+head(test)
+```
+
+```{r}
+cred = cbind(creditest, test)
+cred
+```
+
+```{r}
+cred['Result'] = ifelse(cred$bad >= 0.5, "bad", "good") 
+cred
+```
+
+```{r}
+confusion = table(cred$class, cred$Result)
+confusion
+ta = (confusion[1] + confusion[4])/sum(confusion)
+ta
+```
 
