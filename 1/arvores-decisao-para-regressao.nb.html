@@ -1928,9 +1928,76 @@ text(model)</code></pre>
 <!-- rnb-plot-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<div id="para-fins-didáticos-será-previsto-um-valor-já-existente" class="section level1">
+<h1>Para fins didáticos será previsto um valor já existente</h1>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJldiA9IHByZWRpY3QobW9kZWwsIGlyaXMpXG5oZWFkKHByZXYpXG5gYGAifQ== -->
+<pre class="r"><code>prev = predict(model, iris)
+head(prev)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgIDEgICAgICAgIDIgICAgICAgIDMgICAgICAgIDQgICAgICAgIDUgICAgICAgIDYgXG41LjE0MTY2NyA0LjY4ODIzNSA0LjY4ODIzNSA0LjY4ODIzNSA1LjE0MTY2NyA1LjMzMTU3OSBcbiJ9 -->
+<pre><code>       1        2        3        4        5        6 
+5.141667 4.688235 4.688235 4.688235 5.141667 5.331579 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="comparando-a-previsão-com-com-os-dados-reais" class="section level1">
+<h1>Comparando a previsão com com os dados reais</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA9IGNiaW5kKHByZXYsIGlyaXMkU2VwYWwuTGVuZ3RoLHByZXYgLSBpcmlzJFNlcGFsLkxlbmd0aClcbmhlYWQoeCwgNSlcbmBgYCJ9 -->
+<pre class="r"><code>x = cbind(prev, iris$Sepal.Length,prev - iris$Sepal.Length)
+head(x, 5)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgcHJldiAgICAgICAgICAgICAgICBcbjEgNS4xNDE2NjcgNS4xICAwLjA0MTY2NjY3XG4yIDQuNjg4MjM1IDQuOSAtMC4yMTE3NjQ3MVxuMyA0LjY4ODIzNSA0LjcgLTAuMDExNzY0NzFcbjQgNC42ODgyMzUgNC42ICAwLjA4ODIzNTI5XG41IDUuMTQxNjY3IDUuMCAgMC4xNDE2NjY2N1xuIn0= -->
+<pre><code>      prev                
+1 5.141667 5.1  0.04166667
+2 4.688235 4.9 -0.21176471
+3 4.688235 4.7 -0.01176471
+4 4.688235 4.6  0.08823529
+5 5.141667 5.0  0.14166667</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29sbmFtZXMoeCkgPC0gYygncHJldicsICdyZWFsJywgJ2RpZicpXG5cbmhlYWQoeCwxMClcbmBgYCJ9 -->
+<pre class="r"><code>colnames(x) &lt;- c(&#39;prev&#39;, &#39;real&#39;, &#39;dif&#39;)
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7cn0NCmxpYnJhcnkocnBhcnQpDQpsaWJyYXJ5KGZvcmVjYXN0KQ0KYGBgDQoNCg0KYGBge3J9DQppcmlzDQpgYGANCg0KDQogLSBQcmV2ZW5kbyBhbyBUYW1hbmhvIGRhIFNlcGFsYQ0KYGBge3J9DQoNCm1vZGVsID0gcnBhcnQoU2VwYWwuTGVuZ3RoIH4gU2VwYWwuV2lkdGggKyBQZXRhbC5XaWR0aCArIFNwZWNpZXMsIGRhdGE9aXJpcykNCnN1bW1hcnkobW9kZWwpDQptb2RlbA0KYGBgDQpgYGB7cn0NCnBsb3QobW9kZWwpDQp0ZXh0KG1vZGVsKQ0KYGBgDQoNCg==</div>
+head(x,10)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgIHByZXYgcmVhbCAgICAgICAgIGRpZlxuMSAgNS4xNDE2NjcgIDUuMSAgMC4wNDE2NjY2N1xuMiAgNC42ODgyMzUgIDQuOSAtMC4yMTE3NjQ3MVxuMyAgNC42ODgyMzUgIDQuNyAtMC4wMTE3NjQ3MVxuNCAgNC42ODgyMzUgIDQuNiAgMC4wODgyMzUyOVxuNSAgNS4xNDE2NjcgIDUuMCAgMC4xNDE2NjY2N1xuNiAgNS4zMzE1NzkgIDUuNCAtMC4wNjg0MjEwNVxuNyAgNS4xNDE2NjcgIDQuNiAgMC41NDE2NjY2N1xuOCAgNS4xNDE2NjcgIDUuMCAgMC4xNDE2NjY2N1xuOSAgNC42ODgyMzUgIDQuNCAgMC4yODgyMzUyOVxuMTAgNC42ODgyMzUgIDQuOSAtMC4yMTE3NjQ3MVxuIn0= -->
+<pre><code>       prev real         dif
+1  5.141667  5.1  0.04166667
+2  4.688235  4.9 -0.21176471
+3  4.688235  4.7 -0.01176471
+4  4.688235  4.6  0.08823529
+5  5.141667  5.0  0.14166667
+6  5.331579  5.4 -0.06842105
+7  5.141667  4.6  0.54166667
+8  5.141667  5.0  0.14166667
+9  4.688235  4.4  0.28823529
+10 4.688235  4.9 -0.21176471</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYWNjdXJhY3kocHJldiwgaXJpcyRTZXBhbC5MZW5ndGgpXG5gYGAifQ== -->
+<pre class="r"><code>accuracy(prev, iris$Sepal.Length)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgICAgICBNRSAgICAgIFJNU0UgICAgICBNQUUgICAgICAgIE1QRSAgICAgTUFQRVxuVGVzdCBzZXQgLTEuMTI0OTAzZS0xNiAwLjQzMDMzNDkgMC4zMzMwOTMgLTAuNDk0MTk0NCA1LjYxMTUxOFxuIn0= -->
+<pre><code>                    ME      RMSE      MAE        MPE     MAPE
+Test set -1.124903e-16 0.4303349 0.333093 -0.4941944 5.611518</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+</div>
+
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7cn0NCmxpYnJhcnkocnBhcnQpDQpsaWJyYXJ5KGZvcmVjYXN0KQ0KYGBgDQoNCg0KYGBge3J9DQppcmlzDQpgYGANCg0KDQogLSBQcmV2ZW5kbyBhbyBUYW1hbmhvIGRhIFNlcGFsYQ0KYGBge3J9DQoNCm1vZGVsID0gcnBhcnQoU2VwYWwuTGVuZ3RoIH4gU2VwYWwuV2lkdGggKyBQZXRhbC5XaWR0aCArIFNwZWNpZXMsIGRhdGE9aXJpcykNCnN1bW1hcnkobW9kZWwpDQptb2RlbA0KYGBgDQpgYGB7cn0NCnBsb3QobW9kZWwpDQp0ZXh0KG1vZGVsKQ0KYGBgDQojIFBhcmEgZmlucyBkaWTDoXRpY29zIHNlcsOhIHByZXZpc3RvIHVtIHZhbG9yIGrDoSBleGlzdGVudGUNCmBgYHtyfQ0KcHJldiA9IHByZWRpY3QobW9kZWwsIGlyaXMpDQpoZWFkKHByZXYpDQpgYGANCg0KIyBDb21wYXJhbmRvIGEgcHJldmlzw6NvIGNvbSBjb20gb3MgZGFkb3MgcmVhaXMNCg0KYGBge3J9DQp4ID0gY2JpbmQocHJldiwgaXJpcyRTZXBhbC5MZW5ndGgscHJldiAtIGlyaXMkU2VwYWwuTGVuZ3RoKQ0KaGVhZCh4LCA1KQ0KDQpgYGANCg0KYGBge3J9DQpjb2xuYW1lcyh4KSA8LSBjKCdwcmV2JywgJ3JlYWwnLCAnZGlmJykNCg0KaGVhZCh4LDEwKQ0KDQpgYGANCg0KYGBge3J9DQphY2N1cmFjeShwcmV2LCBpcmlzJFNlcGFsLkxlbmd0aCkNCmBgYA0KDQo=</div>
 
 
 
