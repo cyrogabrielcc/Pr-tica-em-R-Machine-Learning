@@ -31,7 +31,9 @@ print(tree)
 ```
 
 ```{r}
-rpart.plot(tree, type = 3)
+rpart.plot(tree, type = 2, yesno=F, fallen.leaves = F,
+extra = 102, under = T, cex=NULL, uniform=T, varlen=3, gap=0,
+space=0, tweak=1.2);
 ```
 
 ```{r}
