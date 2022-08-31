@@ -1,0 +1,15 @@
+---
+title: "Naive Bayes"
+output: html_notebook
+---
+
+```{r}
+library(e1071)
+
+```
+
+```{r}
+
+
+```
+
