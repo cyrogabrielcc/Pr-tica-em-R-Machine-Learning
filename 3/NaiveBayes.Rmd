@@ -5,11 +5,56 @@ output: html_notebook
 
 ```{r}
 library(e1071)
-
+library(caret)
+library(ggplot2)
 ```
+
+> ###### Esse algortimo olha a probabilidade de um atributo influenciar a classe
+> ###### Cra tabelas de probabilidade independentes
+
+```{r}
+credit = read.csv("Credit.csv")
+head(credit)
+dim(credit)
+```
+> ###### Transformando a classe em fator
+
+```{r}
+credit$class = as.factor(credit$class)
+```
+
+> ###### Separing data test and trainning
 
 ```{r}
 
+am = sample(2,1000, replace = T, prob = c(0.7,0.3))
 
+ctreino = credit[am==1,]
+cteste = credit[am==2,]
+
+```
+
+> ####### Criando modelo
+
+```{r}
+model = naiveBayes(class ~. , ctreino)
+model
+```
+> ###### Prevendo
+
+```{r}
+pred = predict(model, cteste)
+pred
+```
+> ##### Matriz de confusão
+
+```{r}
+cnf = table(cteste$class, pred)
+
+acerto = (cnf[1] + cnf[4]) / sum(cnf)
+erro = (cnf[2] + cnf[3]) / sum(cnf)
+
+acerto
+erro
 ```
 

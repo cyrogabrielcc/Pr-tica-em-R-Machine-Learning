@@ -1760,19 +1760,243 @@ display: none;
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShlMTA3MSlcblxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShlMTA3MSlcbmxpYnJhcnkoY2FyZXQpXG5saWJyYXJ5KGdncGxvdDIpXG5gYGAifQ== -->
 <pre class="r"><code>library(e1071)
+library(caret)
+library(ggplot2)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<blockquote>
+<h6 id="esse-algortimo-olha-a-probabilidade-de-um-atributo-influenciar-a-classe">Esse
+algortimo olha a probabilidade de um atributo influenciar a classe</h6>
+<h6 id="cra-tabelas-de-probabilidade-independentes">Cra tabelas de
+probabilidade independentes</h6>
+</blockquote>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY3JlZGl0ID0gcmVhZC5jc3YoXCJDcmVkaXQuY3N2XCIpXG5oZWFkKGNyZWRpdClcbmBgYCJ9 -->
+<pre class="r"><code>credit = read.csv(&quot;Credit.csv&quot;)
+head(credit)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6NiwibmNvbCI6MjEsInN1bW1hcnkiOltdfSwicmRmIjoiSDRzSUFBQUFBQUFBQnExVzIyN1RRQkIxYzJzVGthWnEyc0lUc2xRa1MwaTVsQmFWaHhRZVFId0FBcWx2MXRhZUpFdld1MmE5VHBvM2ZvSGY0cU1LWThmclc1TlFDcEZHbmptN016dTNuYzJuRDlmbnJldVdZUmhWbzFiWk1hcDFaSTM2bDg4ZmUyOE1SRkRZTVdwR00vcmU0cVl1TXNkSUIwaU5aS0V5R2liYzNuQjBkVDE2TmRSeTIrTENkS2JnekNpZldQZTJaMXhwSXdLeC9SVU5rWjRndlVSNmh2U2lkTDVwT1pJcTZoQTJFR29LMG9SYkdpZzBaRG9TWEtyMHdSMHJYZkFKZGEzL28zNWt1Y0RJRWx6VGx6Q25JZ3pZY3FOSzBmRTlTVndxQm1xK1FXNkNHenBFVWNFVG9Ec09KYWNxbERDQWJ5SDFQZUJLNzdVNExFeUhTT3UrY3ByTzJnL0RlUG91cXBOaFBQK0o5aEE3dFV0ZUhVYTFtSEd4NEdaQTV1aDdvRTNXUm1kcGFSL0NyN05VUEt2Njl1b3lZUnRuVWU5Y2FPa2lraTdYUzhXZGlaVDFUQzFxclJ4VmsyLys0TGJsRVFabWdFNHh5RW81aGhoMjZYemdnai93c25TdVZYZzBXSFNteGdXSFAvRE5TVWdrNFVySWpSdnZaNkNhOEpxS0daQkFtQW1CSWlybjVrUEJBNHZSTVppVUJ5RzY1YVI0TjZ1NUw0VVBVaTIzTG1WT3YwYzZRVHBENmlHOVJqcDlSS2EyODZYK1EyZTJzaTFyTEtRNWxwQUd1QjNKd2xtTnpveTBuRDkrTjVoUnhzQmRMeDVaSVU4UVUwSkFYYnp0MWo5b1pyN2xmY3BUSVRWTENCNlo2VmgxbzdXL1prc3RNQkZDeDFtOUllNGFlT3VXNHFOVzU4UkxqempXWTF1L1JIYlU4cUYyWnMvRlZzOU40LzNWKzJCUGNjUUx1ZFNsOEVQcGkwRG5vcDFzSXA0STAyRzluNHpEb3YwV2VENFR5OXhRUDhIcnBRaGpFV1E3d3ZPb3lxMTI4QW9GZ2hOV05OT09YekhiSjFMUk5KR2RwQTBjc0hFR09kcTdRMzBSYlk5TW9wZkZUV3RJSnBydGFvT3hhN2JQQ05kbWQ2ZjQzbUVrZWlqbzU4NWVSWjJXOGF1NDBhSHowTE54dGdLUG1qTHplY0Z0QlF6OGFkWkcrM2l0Z0U2NHZSQnlCbnJ1MVIxR2dxQlV4cVlVaTc0dVpkVGxsZTlHL0d1VTY1MW94L1hXWU1zbGl2VEhFdlZSdWl1cDdBby9Lam9xVmFKL1AvV1M4bzRzQVoyUVI1NjRQV2NhOGxudlBEb2dkK2ZheWJlUjQ0OVhSMVorSmFicSttMERQcUZwUHVxTTNBRFR5Y0dJNDREN3ZxUnBTN1FRRGZwS1lOTm94QkZNSTNGc3h0MXZHdkl5NWZRSkFBQT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["checking_status"],"name":[1],"type":["chr"],"align":["left"]},{"label":["duration"],"name":[2],"type":["int"],"align":["right"]},{"label":["credit_history"],"name":[3],"type":["chr"],"align":["left"]},{"label":["purpose"],"name":[4],"type":["chr"],"align":["left"]},{"label":["credit_amount"],"name":[5],"type":["int"],"align":["right"]},{"label":["savings_status"],"name":[6],"type":["chr"],"align":["left"]},{"label":["employment"],"name":[7],"type":["chr"],"align":["left"]},{"label":["installment_commitment"],"name":[8],"type":["int"],"align":["right"]},{"label":["personal_status"],"name":[9],"type":["chr"],"align":["left"]},{"label":["other_parties"],"name":[10],"type":["chr"],"align":["left"]},{"label":["residence_since"],"name":[11],"type":["int"],"align":["right"]},{"label":["property_magnitude"],"name":[12],"type":["chr"],"align":["left"]},{"label":["age"],"name":[13],"type":["int"],"align":["right"]},{"label":["other_payment_plans"],"name":[14],"type":["chr"],"align":["left"]},{"label":["housing"],"name":[15],"type":["chr"],"align":["left"]},{"label":["existing_credits"],"name":[16],"type":["int"],"align":["right"]},{"label":["job"],"name":[17],"type":["chr"],"align":["left"]},{"label":["num_dependents"],"name":[18],"type":["int"],"align":["right"]},{"label":["own_telephone"],"name":[19],"type":["chr"],"align":["left"]},{"label":["foreign_worker"],"name":[20],"type":["chr"],"align":["left"]},{"label":["class"],"name":[21],"type":["chr"],"align":["left"]}],"data":[{"1":"<0","2":"6","3":"'critical/other existing credit'","4":"radio/tv","5":"1169","6":"'no known savings'","7":">=7","8":"4","9":"'male single'","10":"none","11":"4","12":"'real estate'","13":"67","14":"none","15":"own","16":"2","17":"skilled","18":"1","19":"yes","20":"yes","21":"good","_rn_":"1"},{"1":"0<=X<200","2":"48","3":"'existing paid'","4":"radio/tv","5":"5951","6":"<100","7":"1<=X<4","8":"2","9":"'female div/dep/mar'","10":"none","11":"2","12":"'real estate'","13":"22","14":"none","15":"own","16":"1","17":"skilled","18":"1","19":"none","20":"yes","21":"bad","_rn_":"2"},{"1":"'no checking'","2":"12","3":"'critical/other existing credit'","4":"education","5":"2096","6":"<100","7":"4<=X<7","8":"2","9":"'male single'","10":"none","11":"3","12":"'real estate'","13":"49","14":"none","15":"own","16":"1","17":"'unskilled resident'","18":"2","19":"none","20":"yes","21":"good","_rn_":"3"},{"1":"<0","2":"42","3":"'existing paid'","4":"furniture/equipment","5":"7882","6":"<100","7":"4<=X<7","8":"2","9":"'male single'","10":"guarantor","11":"4","12":"'life insurance'","13":"45","14":"none","15":"'for free'","16":"1","17":"skilled","18":"2","19":"none","20":"yes","21":"good","_rn_":"4"},{"1":"<0","2":"24","3":"'delayed previously'","4":"'new car'","5":"4870","6":"<100","7":"1<=X<4","8":"3","9":"'male single'","10":"none","11":"4","12":"'no known property'","13":"53","14":"none","15":"'for free'","16":"2","17":"skilled","18":"2","19":"none","20":"yes","21":"bad","_rn_":"5"},{"1":"'no checking'","2":"36","3":"'existing paid'","4":"education","5":"9055","6":"'no known savings'","7":"1<=X<4","8":"2","9":"'male single'","10":"none","11":"4","12":"'no known property'","13":"35","14":"none","15":"'for free'","16":"1","17":"'unskilled resident'","18":"2","19":"yes","20":"yes","21":"good","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10],"total":[21]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGltKGNyZWRpdClcbmBgYCJ9 -->
+<pre class="r"><code>dim(credit)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEwMDAgICAyMVxuIn0= -->
+<pre><code>[1] 1000   21</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<blockquote>
+<h6 id="transformando-a-classe-em-fator">Transformando a classe em
+fator</h6>
+</blockquote>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY3JlZGl0JGNsYXNzID0gYXMuZmFjdG9yKGNyZWRpdCRjbGFzcylcbmBgYCJ9 -->
+<pre class="r"><code>credit$class = as.factor(credit$class)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<blockquote>
+<h6 id="separing-data-test-and-trainning">Separing data test and
+trainning</h6>
+</blockquote>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5hbSA9IHNhbXBsZSgyLDEwMDAsIHJlcGxhY2UgPSBULCBwcm9iID0gYygwLjcsMC4zKSlcblxuY3RyZWlubyA9IGNyZWRpdFthbT09MSxdXG5jdGVzdGUgPSBjcmVkaXRbYW09PTIsXVxuXG5cbmBgYCJ9 -->
+<pre class="r"><code>
+am = sample(2,1000, replace = T, prob = c(0.7,0.3))
+
+ctreino = credit[am==1,]
+cteste = credit[am==2,]
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<blockquote>
+<p class="heading" id="criando-modelo">Criando modelo</p>
+</blockquote>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubW9kZWwgPSBuYWl2ZUJheWVzKGNsYXNzIH4uICwgY3RyZWlubylcbm1vZGVsXG5gYGAifQ== -->
+<pre class="r"><code>model = naiveBayes(class ~. , ctreino)
+model</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5OYWl2ZSBCYXllcyBDbGFzc2lmaWVyIGZvciBEaXNjcmV0ZSBQcmVkaWN0b3JzXG5cbkNhbGw6XG5uYWl2ZUJheWVzLmRlZmF1bHQoeCA9IFgsIHkgPSBZLCBsYXBsYWNlID0gbGFwbGFjZSlcblxuQS1wcmlvcmkgcHJvYmFiaWxpdGllczpcbllcbiAgICAgIGJhZCAgICAgIGdvb2QgXG4wLjI5OTg1MjMgMC43MDAxNDc3IFxuXG5Db25kaXRpb25hbCBwcm9iYWJpbGl0aWVzOlxuICAgICAgY2hlY2tpbmdfc3RhdHVzXG5ZICAgICAgJ25vIGNoZWNraW5nJyAgICAgICAgIDwwICAgICAgPj0yMDAgICAwPD1YPDIwMFxuICBiYWQgICAgIDAuMTQyODU3MTQgMC40NjMwNTQxOSAwLjA0NDMzNDk4IDAuMzQ5NzUzNjlcbiAgZ29vZCAgICAwLjQ5MTU2MTE4IDAuMjA2NzUxMDUgMC4wNjk2MjAyNSAwLjIzMjA2NzUxXG5cbiAgICAgIGR1cmF0aW9uXG5ZICAgICAgICAgIFssMV0gICAgIFssMl1cbiAgYmFkICAyNC43MTkyMSAxMy4xMzM1NVxuICBnb29kIDE5LjUyNzQzIDExLjA5NTYwXG5cbiAgICAgIGNyZWRpdF9oaXN0b3J5XG5ZICAgICAgJ2FsbCBwYWlkJyAnY3JpdGljYWwvb3RoZXIgZXhpc3RpbmcgY3JlZGl0JyAnZGVsYXllZCBwcmV2aW91c2x5JyAnZXhpc3RpbmcgcGFpZCcgJ25vIGNyZWRpdHMvYWxsIHBhaWQnXG4gIGJhZCAgMC4xMDgzNzQzOCAgICAgICAgICAgICAgICAgICAgICAgMC4xNDc3ODMyNSAgICAgICAgICAgMC4wOTg1MjIxNyAgICAgIDAuNTYxNTc2MzUgICAgICAgICAgICAwLjA4Mzc0Mzg0XG4gIGdvb2QgMC4wMjc0MjYxNiAgICAgICAgICAgICAgICAgICAgICAgMC4zNTAyMTA5NyAgICAgICAgICAgMC4wNzM4Mzk2NiAgICAgIDAuNTI1MzE2NDYgICAgICAgICAgICAwLjAyMzIwNjc1XG5cbiAgICAgIHB1cnBvc2VcblkgICAgICAnZG9tZXN0aWMgYXBwbGlhbmNlJyAgICduZXcgY2FyJyAgJ3VzZWQgY2FyJyAgICBidXNpbmVzcyAgIGVkdWNhdGlvbiBmdXJuaXR1cmUvZXF1aXBtZW50ICAgICAgIG90aGVyICAgIHJhZGlvL3R2ICAgICByZXBhaXJzICByZXRyYWluaW5nXG4gIGJhZCAgICAgICAgICAgMC4wMTQ3NzgzMjUgMC4yOTU1NjY1MDIgMC4wNDQzMzQ5NzUgMC4xMTgyMjY2MDEgMC4wODM3NDM4NDIgICAgICAgICAwLjIwNjg5NjU1MiAwLjAxOTcwNDQzMyAwLjE5NzA0NDMzNSAwLjAxNDc3ODMyNSAwLjAwNDkyNjEwOFxuICBnb29kICAgICAgICAgIDAuMDEwNTQ4NTIzIDAuMjE3Mjk5NTc4IDAuMTQxMzUwMjExIDAuMDk3MDQ2NDE0IDAuMDI5NTM1ODY1ICAgICAgICAgMC4xODM1NDQzMDQgMC4wMTI2NTgyMjggMC4yNzYzNzEzMDggMC4wMjEwOTcwNDYgMC4wMTA1NDg1MjNcblxuICAgICAgY3JlZGl0X2Ftb3VudFxuWSAgICAgICAgICBbLDFdICAgICBbLDJdXG4gIGJhZCAgMzgwMC40MDkgMzQ3My4wMTFcbiAgZ29vZCAyOTg5LjM1MiAyNDA2LjQxNFxuXG4gICAgICBzYXZpbmdzX3N0YXR1c1xuWSAgICAgICdubyBrbm93biBzYXZpbmdzJyAgICAgICAgPDEwMCAgICAgID49MTAwMCAgMTAwPD1YPDUwMCA1MDA8PVg8MTAwMFxuICBiYWQgICAgICAgICAwLjA3ODgxNzczNCAwLjc2MzU0Njc5OCAwLjAwOTg1MjIxNyAwLjEyMzE1MjcwOSAwLjAyNDYzMDU0MlxuICBnb29kICAgICAgICAwLjIyNTczODM5NyAwLjUzNTg2NDk3OSAwLjA2MzI5MTEzOSAwLjEwNzU5NDkzNyAwLjA2NzUxMDU0OVxuXG4gICAgICBlbXBsb3ltZW50XG5ZICAgICAgICAgICAgICA8MSAgICAgICAgPj03ICAgICAxPD1YPDQgICAgIDQ8PVg8NyB1bmVtcGxveWVkXG4gIGJhZCAgMC4yMzY0NTMyMCAwLjIxMTgyMjY2IDAuMzMwMDQ5MjYgMC4xNDc3ODMyNSAwLjA3Mzg5MTYzXG4gIGdvb2QgMC4xNDM0NTk5MiAwLjI3NjM3MTMxIDAuMzI0ODk0NTEgMC4xOTQwOTI4MyAwLjA2MTE4MTQzXG5cbiAgICAgIGluc3RhbGxtZW50X2NvbW1pdG1lbnRcblkgICAgICAgICAgWywxXSAgICAgWywyXVxuICBiYWQgIDMuMTQ3NzgzIDEuMDQ3MzEzXG4gIGdvb2QgMi45NDUxNDggMS4xMDk4MDFcblxuICAgICAgcGVyc29uYWxfc3RhdHVzXG5ZICAgICAgJ2ZlbWFsZSBkaXYvZGVwL21hcicgJ21hbGUgZGl2L3NlcCcgJ21hbGUgbWFyL3dpZCcgJ21hbGUgc2luZ2xlJ1xuICBiYWQgICAgICAgICAgICAwLjM0NDgyNzU5ICAgICAwLjA2ODk2NTUyICAgICAwLjA4Mzc0Mzg0ICAgIDAuNTAyNDYzMDVcbiAgZ29vZCAgICAgICAgICAgMC4yODA1OTA3MiAgICAgMC4wNDAwODQzOSAgICAgMC4xMDMzNzU1MyAgICAwLjU3NTk0OTM3XG5cbiAgICAgIG90aGVyX3BhcnRpZXNcblkgICAgICAnY28gYXBwbGljYW50JyAgZ3VhcmFudG9yICAgICAgIG5vbmVcbiAgYmFkICAgICAgMC4wNjQwMzk0MSAwLjAyOTU1NjY1IDAuOTA2NDAzOTRcbiAgZ29vZCAgICAgMC4wMzE2NDU1NyAwLjA1Mjc0MjYyIDAuOTE1NjExODFcblxuICAgICAgcmVzaWRlbmNlX3NpbmNlXG5ZICAgICAgICAgIFssMV0gICAgIFssMl1cbiAgYmFkICAyLjc5MzEwMyAxLjA5NzUwMFxuICBnb29kIDIuNzk5NTc4IDEuMTE0OTE5XG5cbiAgICAgIHByb3BlcnR5X21hZ25pdHVkZVxuWSAgICAgICdsaWZlIGluc3VyYW5jZScgJ25vIGtub3duIHByb3BlcnR5JyAncmVhbCBlc3RhdGUnICAgICAgIGNhclxuICBiYWQgICAgICAgICAwLjI0MTM3OTMgICAgICAgICAgIDAuMjE2NzQ4OCAgICAgMC4xOTcwNDQzIDAuMzQ0ODI3NlxuICBnb29kICAgICAgICAwLjIzNjI4NjkgICAgICAgICAgIDAuMTIwMjUzMiAgICAgMC4zMTAxMjY2IDAuMzMzMzMzM1xuXG4gICAgICBhZ2VcblkgICAgICAgICAgWywxXSAgICAgWywyXVxuICBiYWQgIDMzLjg5NjU1IDEwLjk4Mzk3XG4gIGdvb2QgMzYuMzY3MDkgMTEuNDIxOTZcblxuICAgICAgb3RoZXJfcGF5bWVudF9wbGFuc1xuWSAgICAgICAgICAgIGJhbmsgICAgICAgbm9uZSAgICAgc3RvcmVzXG4gIGJhZCAgMC4xNzI0MTM3OSAwLjc1ODYyMDY5IDAuMDY4OTY1NTJcbiAgZ29vZCAwLjExMzkyNDA1IDAuODM3NTUyNzQgMC4wNDg1MjMyMVxuXG4gICAgICBob3VzaW5nXG5ZICAgICAgJ2ZvciBmcmVlJyAgICAgICBvd24gICAgICByZW50XG4gIGJhZCAgIDAuMTQyODU3MSAwLjY0MDM5NDEgMC4yMTY3NDg4XG4gIGdvb2QgIDAuMDkwNzE3MyAwLjc1OTQ5MzcgMC4xNDk3ODkwXG5cbiAgICAgIGV4aXN0aW5nX2NyZWRpdHNcblkgICAgICAgICAgWywxXSAgICAgIFssMl1cbiAgYmFkICAxLjMyNTEyMyAwLjUwMDIwNzJcbiAgZ29vZCAxLjQxNTYxMiAwLjU3NjM1NjdcblxuICAgICAgam9iXG5ZICAgICAgJ2hpZ2ggcXVhbGlmL3NlbGYgZW1wL21nbXQnICd1bmVtcC91bnNraWxsZWQgbm9uIHJlcycgJ3Vuc2tpbGxlZCByZXNpZGVudCcgICAgc2tpbGxlZFxuICBiYWQgICAgICAgICAgICAgICAgICAgMC4xOTcwNDQzMyAgICAgICAgICAgICAgICAwLjAxOTcwNDQzICAgICAgICAgICAwLjE4MjI2NjAxIDAuNjAwOTg1MjJcbiAgZ29vZCAgICAgICAgICAgICAgICAgIDAuMTQxMzUwMjEgICAgICAgICAgICAgICAgMC4wMjUzMTY0NiAgICAgICAgICAgMC4yMDg4NjA3NiAwLjYyNDQ3MjU3XG5cbiAgICAgIG51bV9kZXBlbmRlbnRzXG5ZICAgICAgICAgIFssMV0gICAgICBbLDJdXG4gIGJhZCAgMS4xNTc2MzUgMC4zNjUyOTk3XG4gIGdvb2QgMS4xNTgyMjggMC4zNjUzNDAxXG5cbiAgICAgIG93bl90ZWxlcGhvbmVcblkgICAgICAgICAgIG5vbmUgICAgICAgeWVzXG4gIGJhZCAgMC42MDU5MTEzIDAuMzk0MDg4N1xuICBnb29kIDAuNTg4NjA3NiAwLjQxMTM5MjRcblxuICAgICAgZm9yZWlnbl93b3JrZXJcblkgICAgICAgICAgICAgIG5vICAgICAgICB5ZXNcbiAgYmFkICAwLjAxNDc3ODMzIDAuOTg1MjIxNjdcbiAgZ29vZCAwLjA0MjE5NDA5IDAuOTU3ODA1OTFcbiJ9 -->
+<pre><code>
+Naive Bayes Classifier for Discrete Predictors
+
+Call:
+naiveBayes.default(x = X, y = Y, laplace = laplace)
+
+A-priori probabilities:
+Y
+      bad      good 
+0.2998523 0.7001477 
+
+Conditional probabilities:
+      checking_status
+Y      &#39;no checking&#39;         &lt;0      &gt;=200   0&lt;=X&lt;200
+  bad     0.14285714 0.46305419 0.04433498 0.34975369
+  good    0.49156118 0.20675105 0.06962025 0.23206751
+
+      duration
+Y          [,1]     [,2]
+  bad  24.71921 13.13355
+  good 19.52743 11.09560
+
+      credit_history
+Y      &#39;all paid&#39; &#39;critical/other existing credit&#39; &#39;delayed previously&#39; &#39;existing paid&#39; &#39;no credits/all paid&#39;
+  bad  0.10837438                       0.14778325           0.09852217      0.56157635            0.08374384
+  good 0.02742616                       0.35021097           0.07383966      0.52531646            0.02320675
+
+      purpose
+Y      &#39;domestic appliance&#39;   &#39;new car&#39;  &#39;used car&#39;    business   education furniture/equipment       other    radio/tv     repairs  retraining
+  bad           0.014778325 0.295566502 0.044334975 0.118226601 0.083743842         0.206896552 0.019704433 0.197044335 0.014778325 0.004926108
+  good          0.010548523 0.217299578 0.141350211 0.097046414 0.029535865         0.183544304 0.012658228 0.276371308 0.021097046 0.010548523
+
+      credit_amount
+Y          [,1]     [,2]
+  bad  3800.409 3473.011
+  good 2989.352 2406.414
+
+      savings_status
+Y      &#39;no known savings&#39;        &lt;100      &gt;=1000  100&lt;=X&lt;500 500&lt;=X&lt;1000
+  bad         0.078817734 0.763546798 0.009852217 0.123152709 0.024630542
+  good        0.225738397 0.535864979 0.063291139 0.107594937 0.067510549
+
+      employment
+Y              &lt;1        &gt;=7     1&lt;=X&lt;4     4&lt;=X&lt;7 unemployed
+  bad  0.23645320 0.21182266 0.33004926 0.14778325 0.07389163
+  good 0.14345992 0.27637131 0.32489451 0.19409283 0.06118143
+
+      installment_commitment
+Y          [,1]     [,2]
+  bad  3.147783 1.047313
+  good 2.945148 1.109801
+
+      personal_status
+Y      &#39;female div/dep/mar&#39; &#39;male div/sep&#39; &#39;male mar/wid&#39; &#39;male single&#39;
+  bad            0.34482759     0.06896552     0.08374384    0.50246305
+  good           0.28059072     0.04008439     0.10337553    0.57594937
+
+      other_parties
+Y      &#39;co applicant&#39;  guarantor       none
+  bad      0.06403941 0.02955665 0.90640394
+  good     0.03164557 0.05274262 0.91561181
+
+      residence_since
+Y          [,1]     [,2]
+  bad  2.793103 1.097500
+  good 2.799578 1.114919
+
+      property_magnitude
+Y      &#39;life insurance&#39; &#39;no known property&#39; &#39;real estate&#39;       car
+  bad         0.2413793           0.2167488     0.1970443 0.3448276
+  good        0.2362869           0.1202532     0.3101266 0.3333333
+
+      age
+Y          [,1]     [,2]
+  bad  33.89655 10.98397
+  good 36.36709 11.42196
+
+      other_payment_plans
+Y            bank       none     stores
+  bad  0.17241379 0.75862069 0.06896552
+  good 0.11392405 0.83755274 0.04852321
+
+      housing
+Y      &#39;for free&#39;       own      rent
+  bad   0.1428571 0.6403941 0.2167488
+  good  0.0907173 0.7594937 0.1497890
+
+      existing_credits
+Y          [,1]      [,2]
+  bad  1.325123 0.5002072
+  good 1.415612 0.5763567
+
+      job
+Y      &#39;high qualif/self emp/mgmt&#39; &#39;unemp/unskilled non res&#39; &#39;unskilled resident&#39;    skilled
+  bad                   0.19704433                0.01970443           0.18226601 0.60098522
+  good                  0.14135021                0.02531646           0.20886076 0.62447257
+
+      num_dependents
+Y          [,1]      [,2]
+  bad  1.157635 0.3652997
+  good 1.158228 0.3653401
+
+      own_telephone
+Y           none       yes
+  bad  0.6059113 0.3940887
+  good 0.5886076 0.4113924
+
+      foreign_worker
+Y              no        yes
+  bad  0.01477833 0.98522167
+  good 0.04219409 0.95780591</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<blockquote>
+<h6 id="prevendo">Prevendo</h6>
+</blockquote>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZCA9IHByZWRpY3QobW9kZWwsIGN0ZXN0ZSlcbnByZWRcbmBgYCJ9 -->
+<pre class="r"><code>pred = predict(model, cteste)
+pred</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICBbMV0gZ29vZCBnb29kIGJhZCAgYmFkICBnb29kIGJhZCAgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBiYWQgIGJhZCAgYmFkICBiYWQgIGdvb2QgZ29vZCBiYWQgIGdvb2QgZ29vZCBnb29kIGJhZCAgZ29vZCBiYWQgIGdvb2QgZ29vZCBiYWQgIGdvb2QgZ29vZCBnb29kXG4gWzMzXSBnb29kIGdvb2QgYmFkICBiYWQgIGdvb2QgYmFkICBnb29kIGdvb2QgZ29vZCBiYWQgIGdvb2QgYmFkICBiYWQgIGJhZCAgZ29vZCBnb29kIGdvb2QgYmFkICBnb29kIGdvb2QgZ29vZCBiYWQgIGdvb2QgZ29vZCBnb29kIGJhZCAgZ29vZCBnb29kIGJhZCAgZ29vZCBnb29kIGdvb2RcbiBbNjVdIGJhZCAgZ29vZCBnb29kIGdvb2QgYmFkICBnb29kIGdvb2QgYmFkICBiYWQgIGdvb2QgYmFkICBnb29kIGdvb2QgYmFkICBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgYmFkICBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBiYWQgIGdvb2QgZ29vZCBiYWQgIGdvb2QgZ29vZFxuIFs5N10gZ29vZCBnb29kIGJhZCAgZ29vZCBnb29kIGdvb2QgYmFkICBnb29kIGJhZCAgZ29vZCBiYWQgIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBiYWQgIGdvb2QgYmFkICBnb29kIGdvb2QgYmFkICBnb29kIGdvb2QgYmFkICBnb29kXG5bMTI5XSBnb29kIGJhZCAgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBiYWQgIGdvb2QgZ29vZCBnb29kIGdvb2QgYmFkICBnb29kIGdvb2QgZ29vZCBiYWQgIGJhZCAgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2RcblsxNjFdIGdvb2QgZ29vZCBiYWQgIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGJhZCAgZ29vZCBiYWQgIGJhZCAgZ29vZCBnb29kIGJhZCAgYmFkICBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgYmFkICBnb29kIGdvb2QgZ29vZCBnb29kIGJhZCAgZ29vZCBnb29kIGdvb2QgZ29vZFxuWzE5M10gZ29vZCBnb29kIGJhZCAgYmFkICBnb29kIGdvb2QgZ29vZCBnb29kIGJhZCAgZ29vZCBnb29kIGdvb2QgYmFkICBnb29kIGdvb2QgZ29vZCBnb29kIGJhZCAgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGJhZCAgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kXG5bMjI1XSBiYWQgIGJhZCAgYmFkICBnb29kIGJhZCAgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBiYWQgIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBiYWQgIGdvb2QgZ29vZCBnb29kIGdvb2RcblsyNTddIGdvb2QgZ29vZCBiYWQgIGJhZCAgZ29vZCBiYWQgIGdvb2QgZ29vZCBiYWQgIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBiYWQgIGdvb2QgYmFkICBnb29kIGdvb2QgZ29vZCBiYWQgIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZFxuWzI4OV0gZ29vZCBnb29kIGdvb2QgZ29vZCBiYWQgIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBnb29kIGdvb2QgZ29vZCBiYWQgIGdvb2QgYmFkICBiYWQgIGdvb2QgZ29vZCBnb29kIGJhZCAgYmFkICBiYWQgIGdvb2QgZ29vZCBnb29kIGJhZCAgZ29vZCBnb29kIGJhZCAgZ29vZCBnb29kXG5bMzIxXSBiYWQgIGdvb2QgZ29vZFxuTGV2ZWxzOiBiYWQgZ29vZFxuIn0= -->
+<pre><code>  [1] good good bad  bad  good bad  good good good good good good good bad  bad  bad  bad  good good bad  good good good bad  good bad  good good bad  good good good
+ [33] good good bad  bad  good bad  good good good bad  good bad  bad  bad  good good good bad  good good good bad  good good good bad  good good bad  good good good
+ [65] bad  good good good bad  good good bad  bad  good bad  good good bad  good good good good good bad  good good good good good good bad  good good bad  good good
+ [97] good good bad  good good good bad  good bad  good bad  good good good good good good good good good good good bad  good bad  good good bad  good good bad  good
+[129] good bad  good good good good good good good good good good bad  good good good good bad  good good good bad  bad  good good good good good good good good good
+[161] good good bad  good good good good good good bad  good bad  bad  good good bad  bad  good good good good good bad  good good good good bad  good good good good
+[193] good good bad  bad  good good good good bad  good good good bad  good good good good bad  good good good good good good good good bad  good good good good good
+[225] bad  bad  bad  good bad  good good good good good good good bad  good good good good good good good good good good good good good good bad  good good good good
+[257] good good bad  bad  good bad  good good bad  good good good good good good good good bad  good bad  good good good bad  good good good good good good good good
+[289] good good good good bad  good good good good good good good good bad  good bad  bad  good good good bad  bad  bad  good good good bad  good good bad  good good
+[321] bad  good good
+Levels: bad good</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<blockquote>
+<h5 id="matriz-de-confusão">Matriz de confusão</h5>
+</blockquote>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY25mID0gdGFibGUoY3Rlc3RlJGNsYXNzLCBwcmVkKVxuXG5hY2VydG8gPSAoY25mWzFdICsgY25mWzRdKSAvIHN1bShjbmYpXG5lcnJvID0gKGNuZlsyXSArIGNuZlszXSkgLyBzdW0oY25mKVxuXG5hY2VydG9cbmBgYCJ9 -->
+<pre class="r"><code>cnf = table(cteste$class, pred)
+
+acerto = (cnf[1] + cnf[4]) / sum(cnf)
+erro = (cnf[2] + cnf[3]) / sum(cnf)
+
+acerto</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNzM5OTM4MVxuIn0= -->
+<pre><code>[1] 0.7399381</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZXJyb1xuYGBgIn0= -->
+<pre class="r"><code>erro</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMjYwMDYxOVxuIn0= -->
+<pre><code>[1] 0.2600619</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIk5haXZlIEJheWVzIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KYGBge3J9DQpsaWJyYXJ5KGUxMDcxKQ0KDQpgYGANCg0KYGBge3J9DQoNCg0KYGBgDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIk5haXZlIEJheWVzIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KYGBge3J9DQpsaWJyYXJ5KGUxMDcxKQ0KbGlicmFyeShjYXJldCkNCmxpYnJhcnkoZ2dwbG90MikNCmBgYA0KDQo+ICMjIyMjIyBFc3NlIGFsZ29ydGltbyBvbGhhIGEgcHJvYmFiaWxpZGFkZSBkZSB1bSBhdHJpYnV0byBpbmZsdWVuY2lhciBhIGNsYXNzZQ0KPiAjIyMjIyMgQ3JhIHRhYmVsYXMgZGUgcHJvYmFiaWxpZGFkZSBpbmRlcGVuZGVudGVzDQoNCmBgYHtyfQ0KY3JlZGl0ID0gcmVhZC5jc3YoIkNyZWRpdC5jc3YiKQ0KaGVhZChjcmVkaXQpDQpkaW0oY3JlZGl0KQ0KYGBgDQo+ICMjIyMjIyBUcmFuc2Zvcm1hbmRvIGEgY2xhc3NlIGVtIGZhdG9yDQoNCmBgYHtyfQ0KY3JlZGl0JGNsYXNzID0gYXMuZmFjdG9yKGNyZWRpdCRjbGFzcykNCmBgYA0KDQo+ICMjIyMjIyBTZXBhcmluZyBkYXRhIHRlc3QgYW5kIHRyYWlubmluZw0KDQpgYGB7cn0NCg0KYW0gPSBzYW1wbGUoMiwxMDAwLCByZXBsYWNlID0gVCwgcHJvYiA9IGMoMC43LDAuMykpDQoNCmN0cmVpbm8gPSBjcmVkaXRbYW09PTEsXQ0KY3Rlc3RlID0gY3JlZGl0W2FtPT0yLF0NCg0KYGBgDQoNCj4gIyMjIyMjIyBDcmlhbmRvIG1vZGVsbw0KDQpgYGB7cn0NCm1vZGVsID0gbmFpdmVCYXllcyhjbGFzcyB+LiAsIGN0cmVpbm8pDQptb2RlbA0KYGBgDQo+ICMjIyMjIyBQcmV2ZW5kbw0KDQpgYGB7cn0NCnByZWQgPSBwcmVkaWN0KG1vZGVsLCBjdGVzdGUpDQpwcmVkDQpgYGANCj4gIyMjIyMgTWF0cml6IGRlIGNvbmZ1c8Ojbw0KDQpgYGB7cn0NCmNuZiA9IHRhYmxlKGN0ZXN0ZSRjbGFzcywgcHJlZCkNCg0KYWNlcnRvID0gKGNuZlsxXSArIGNuZls0XSkgLyBzdW0oY25mKQ0KZXJybyA9IChjbmZbMl0gKyBjbmZbM10pIC8gc3VtKGNuZikNCg0KYWNlcnRvDQplcnJvDQpgYGANCg0K</div>
 
 
 
